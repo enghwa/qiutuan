@@ -10,4 +10,5 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 WORKDIR /app
 COPY --from=build-env /app/FargateDemo.Web.Host/out .
+EXPOSE 80
 ENTRYPOINT ["dotnet", "FargateDemo.Web.Host.dll"]
