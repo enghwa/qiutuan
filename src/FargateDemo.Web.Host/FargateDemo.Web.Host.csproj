@@ -58,7 +58,7 @@
     <None Remove="external_libs\**" />
     <None Remove="node_modules\**" />
   </ItemGroup>
-  <Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">
+  <!-- Target Name="PrepublishScript" BeforeTargets="ComputeFilesToPublish">
     <Exec Command="ng build --prod" />
     <ItemGroup>
       <DistFiles Include="wwwroot\**\*" />
@@ -67,7 +67,7 @@
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </ResolvedFileToPublish>
     </ItemGroup>
-  </Target>
+  </Target-->
   <PropertyGroup>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
