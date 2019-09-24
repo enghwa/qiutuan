@@ -4,7 +4,6 @@ WORKDIR /app
 COPY ./ .
 WORKDIR /app/FargateDemo.Web.Host
 RUN dotnet restore
-
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
