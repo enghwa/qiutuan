@@ -8,7 +8,9 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+
 WORKDIR /app
+ADD dbmigrate.sh .
+RUN chmod +x /app/dbmigrate.sh
 COPY --from=build-env /app/FargateDemo.Migrator/out .
-ENV ConnectionStrings__Default="Server=$MSSQL_SERVER; Database=FargateDemoDb; User=sa; Password=$SA_PASSWORD"
-ENTRYPOINT ["dotnet", "FargateDemo.Migrator.dll", "-q"]
+ENTRYPOINT ["/app/dbmigrate.sh"]
